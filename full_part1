@@ -1,0 +1,14 @@
+import pandas as pd
+
+# Try reading the file with different encodings
+encodings = ['utf-8', 'latin1', 'cp1252']
+
+for encoding in encodings:
+    try:
+        full_df = pd.read_csv('full.csv', encoding=encoding)
+        print(f"Successfully loaded with encoding: {encoding}")
+        print(full_df.head())
+        break
+    except UnicodeDecodeError as e:
+        print(f"Failed with encoding: {encoding}")
+        print(e)
