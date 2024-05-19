@@ -1,0 +1,19 @@
+import pandas as pd
+
+def clean_csv(file_path, output_path, encoding='latin1'):
+    with open(file_path, encoding=encoding) as infile, open(output_path, 'w', encoding=encoding) as outfile:
+        reader = csv.reader(infile)
+        writer = csv.writer(outfile)
+        for line in reader:
+            try:
+                # Try to parse line and write to output if successful
+                pd.DataFrame([line])
+                writer.writerow(line)
+            except Exception as e:
+                # Skip problematic line
+                print(f"Skipping problematic line: {line}")
+
+# Clean each file and write to new cleaned files
+clean_csv('train_pc.csv', 'cleaned_train_pc.csv')
+clean_csv('valid_pc.csv', 'cleaned_valid_pc.csv')
+clean_csv('test_pc.csv', 'cleaned_test_pc.csv')
