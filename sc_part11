@@ -1,0 +1,12 @@
+import matplotlib.pyplot as plt
+
+# Visualization for Mean Absolute Error
+mae_values = [mean_absolute_error(y_test_sc, y_test_sc_pred), mean_absolute_error(y_test_sc, y_test_sc_pred_gb)]
+models = ['Random Forest', 'Gradient Boosting']
+
+plt.figure(figsize=(10, 6))
+plt.bar(models, mae_values, color=['blue', 'green'])
+plt.title('Mean Absolute Error for Different Models')
+plt.xlabel('Model')
+plt.ylabel('Mean Absolute Error')
+plt.show()
