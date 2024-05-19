@@ -1,0 +1,13 @@
+from sklearn.linear_model import LogisticRegression
+
+# Split data into features and labels
+y_train = train_df['label']
+y_valid = valid_df['label']
+y_test = test_df['label']
+
+# Initialize and train the model
+model = LogisticRegression(max_iter=1000)
+model.fit(X_train_tfidf, y_train)
+
+# Predict on the validation set
+y_valid_pred = model.predict(X_valid_tfidf)
