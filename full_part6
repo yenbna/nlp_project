@@ -1,0 +1,10 @@
+# Visualization for Mean Squared Error
+mse_values = [mean_squared_error(y_test, y_test_pred)]
+models = ['Random Forest']
+
+plt.figure(figsize=(10, 6))
+plt.bar(models, mse_values, color=['blue'])
+plt.title('Mean Squared Error for Random Forest Model')
+plt.xlabel('Model')
+plt.ylabel('Mean Squared Error')
+plt.show()
