@@ -1,0 +1,9 @@
+# Load cleaned data with specified encoding
+train_sc_df = pd.read_csv('cleaned_train_sc.csv', encoding='latin1')
+valid_sc_df = pd.read_csv('cleaned_valid_sc.csv', encoding='latin1')
+test_sc_df = pd.read_csv('cleaned_test_sc.csv', encoding='latin1')
+
+# Preview the data
+print(train_sc_df.head())
+print(valid_sc_df.head())
+print(test_sc_df.head())
