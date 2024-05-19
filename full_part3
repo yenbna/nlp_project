@@ -1,0 +1,10 @@
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+# Initialize TfidfVectorizer
+vectorizer_full = TfidfVectorizer(max_features=5000)
+
+# Transform text to numeric format
+X_full_tfidf = vectorizer_full.fit_transform(full_df['text_cleaned'])
+
+# Check the shape of the transformed data
+print(X_full_tfidf.shape)
