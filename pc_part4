@@ -1,0 +1,17 @@
+import re
+
+# Example text cleaning function
+def clean_text(text):
+    text = text.lower()  # Convert to lowercase
+    text = re.sub(r'\b\d+\b', ' ', text)  # Remove numbers
+    text = re.sub(r'[^\w\s]', ' ', text)  # Remove punctuation
+    text = re.sub(r'\s+', ' ', text)  # Remove extra spaces
+    return text.strip()
+
+# Apply cleaning function to the data
+train_df['text_cleaned'] = train_df['text_cleaned'].apply(clean_text)
+valid_df['text_cleaned'] = valid_df['text_cleaned'].apply(clean_text)
+test_df['text_cleaned'] = test_df['text_cleaned'].apply(clean_text)
+
+# Preview cleaned text
+print(train_df['text_cleaned'].head())
