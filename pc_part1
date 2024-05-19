@@ -1,0 +1,21 @@
+import csv
+
+# Detect problematic lines in the CSV file
+def detect_problematic_lines(file_path, encoding='latin1'):
+    with open(file_path, encoding=encoding) as f:
+        reader = csv.reader(f)
+        for i, line in enumerate(reader):
+            try:
+                # Attempt to parse the line
+                pd.DataFrame([line])
+            except Exception as e:
+                print(f"Problematic line {i}: {line}")
+                print(e)
+
+# Check for problematic lines in each file
+print("Checking train_pc.csv")
+detect_problematic_lines('train_pc.csv')
+print("Checking valid_pc.csv")
+detect_problematic_lines('valid_pc.csv')
+print("Checking test_pc.csv")
+detect_problematic_lines('test_pc.csv')
