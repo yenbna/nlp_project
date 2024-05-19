@@ -1,0 +1,7 @@
+import joblib
+
+# Save the model
+joblib.dump(model, 'logistic_regression_model.pkl')
+
+# To load the model later
+# model = joblib.load('logistic_regression_model.pkl')
