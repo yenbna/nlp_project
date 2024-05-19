@@ -1,0 +1,18 @@
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X_full_tfidf, full_df['label'], test_size=0.2, random_state=42)
+
+# Initialize and train the Random Forest model
+model_full = RandomForestRegressor(n_estimators=100, random_state=42)
+model_full.fit(X_train, y_train)
+
+# Predict on the test set
+y_test_pred = model_full.predict(X_test)
+
+# Evaluate the model
+print("Test Mean Absolute Error: ", mean_absolute_error(y_test, y_test_pred))
+print("Test Mean Squared Error: ", mean_squared_error(y_test, y_test_pred))
+print("Test R2 Score: ", r2_score(y_test, y_test_pred))
