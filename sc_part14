@@ -1,0 +1,11 @@
+import joblib
+
+# Save the Random Forest model
+joblib.dump(best_model_sc, 'random_forest_sc_model.pkl')
+
+# Save the Gradient Boosting model
+joblib.dump(gb_model, 'gradient_boosting_sc_model.pkl')
+
+# To load the model later
+# best_model_sc = joblib.load('random_forest_sc_model.pkl')
+# gb_model = joblib.load('gradient_boosting_sc_model.pkl')
