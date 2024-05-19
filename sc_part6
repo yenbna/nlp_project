@@ -1,0 +1,13 @@
+from sklearn.ensemble import RandomForestRegressor
+
+# Split data into features and labels
+y_train_sc = train_sc_df['label']
+y_valid_sc = valid_sc_df['label']
+y_test_sc = test_sc_df['label']
+
+# Initialize and train the Random Forest model
+model_sc = RandomForestRegressor(n_estimators=100, random_state=42)
+model_sc.fit(X_train_sc_tfidf, y_train_sc)
+
+# Predict on the validation set
+y_valid_sc_pred = model_sc.predict(X_valid_sc_tfidf)
