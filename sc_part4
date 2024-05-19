@@ -1,0 +1,15 @@
+# Text Cleaning
+def clean_text(text):
+    text = text.lower()  # Convert to lowercase
+    text = re.sub(r'\b\d+\b', ' ', text)  # Remove numbers
+    text = re.sub(r'[^\w\s]', ' ', text)  # Remove punctuation
+    text = re.sub(r'\s+', ' ', text)  # Remove extra spaces
+    return text.strip()
+
+# Apply cleaning function to the data
+train_sc_df['text_cleaned'] = train_sc_df['text_cleaned'].apply(clean_text)
+valid_sc_df['text_cleaned'] = valid_sc_df['text_cleaned'].apply(clean_text)
+test_sc_df['text_cleaned'] = test_sc_df['text_cleaned'].apply(clean_text)
+
+# Preview cleaned text
+print(train_sc_df['text_cleaned'].head())
