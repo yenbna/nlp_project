@@ -1,0 +1,15 @@
+from sklearn.ensemble import RandomForestClassifier
+
+# Initialize and train the Random Forest model
+rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
+rf_model.fit(X_train_tfidf, y_train)
+
+# Predict on the validation and test sets
+y_valid_pred_rf = rf_model.predict(X_valid_tfidf)
+y_test_pred_rf = rf_model.predict(X_test_tfidf)
+
+# Evaluate the Random Forest model
+print("Validation Accuracy (RF): ", accuracy_score(y_valid, y_valid_pred_rf))
+print(classification_report(y_valid, y_valid_pred_rf))
+print("Test Accuracy (RF): ", accuracy_score(y_test, y_test_pred_rf))
+print(classification_report(y_test, y_test_pred_rf))
