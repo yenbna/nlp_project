@@ -1,11 +1,10 @@
-import joblib
+# Visualization for R2 Score
+r2_values = [r2_score(y_test_sc, y_test_sc_pred), r2_score(y_test_sc, y_test_sc_pred_gb)]
+models = ['Random Forest', 'Gradient Boosting']
 
-# Save the Random Forest model
-joblib.dump(best_model_sc, 'random_forest_sc_model.pkl')
-
-# Save the Gradient Boosting model
-joblib.dump(gb_model, 'gradient_boosting_sc_model.pkl')
-
-# To load the model later
-# best_model_sc = joblib.load('random_forest_sc_model.pkl')
-# gb_model = joblib.load('gradient_boosting_sc_model.pkl')
+plt.figure(figsize=(10, 6))
+plt.bar(models, r2_values, color=['blue', 'green'])
+plt.title('R2 Score for Different Models')
+plt.xlabel('Model')
+plt.ylabel('R2 Score')
+plt.show()
