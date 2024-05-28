@@ -1,18 +1,11 @@
-from sklearn.ensemble import GradientBoostingRegressor
+import joblib
 
-# Initialize and train the Gradient Boosting model
-gb_model = GradientBoostingRegressor(n_estimators=100, random_state=42)
-gb_model.fit(X_train_sc_tfidf, y_train_sc)
+# Save the Random Forest model
+joblib.dump(best_model, 'random_forest_sc_model.pkl')
 
-# Predict on the validation and test sets
-y_valid_sc_pred_gb = gb_model.predict(X_valid_sc_tfidf)
-y_test_sc_pred_gb = gb_model.predict(X_test_sc_tfidf)
+# Save the Gradient Boosting model
+joblib.dump(gb_model, 'gradient_boosting_sc_model.pkl')
 
-# Evaluate the Gradient Boosting model
-print("Validation Mean Absolute Error (GB): ", mean_absolute_error(y_valid_sc, y_valid_sc_pred_gb))
-print("Validation Mean Squared Error (GB): ", mean_squared_error(y_valid_sc, y_valid_sc_pred_gb))
-print("Validation R2 Score (GB): ", r2_score(y_valid_sc, y_valid_sc_pred_gb))
-
-print("Test Mean Absolute Error (GB): ", mean_absolute_error(y_test_sc, y_test_sc_pred_gb))
-print("Test Mean Squared Error (GB): ", mean_squared_error(y_test_sc, y_test_sc_pred_gb))
-print("Test R2 Score (GB): ", r2_score(y_test_sc, y_test_sc_pred_gb))
+# To load the model later
+# best_model_sc = joblib.load('random_forest_sc_model.pkl')
+# gb_model = joblib.load('gradient_boosting_sc_model.pkl')
