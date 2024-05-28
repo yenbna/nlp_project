@@ -1,12 +1,9 @@
-import matplotlib.pyplot as plt
+# Evaluate the Gradient Boosting model
+print("Gradient Boosting Model:")
+print("Validation Mean Absolute Error (GB): ", mean_absolute_error(y_valid_sc, y_valid_sc_pred_gb))
+print("Validation Mean Squared Error (GB): ", mean_squared_error(y_valid_sc, y_valid_sc_pred_gb))
+print("Validation R2 Score (GB): ", r2_score(y_valid_sc, y_valid_sc_pred_gb))
 
-# Visualization for Mean Absolute Error
-mae_values = [mean_absolute_error(y_test_sc, y_test_sc_pred), mean_absolute_error(y_test_sc, y_test_sc_pred_gb)]
-models = ['Random Forest', 'Gradient Boosting']
-
-plt.figure(figsize=(10, 6))
-plt.bar(models, mae_values, color=['blue', 'green'])
-plt.title('Mean Absolute Error for Different Models')
-plt.xlabel('Model')
-plt.ylabel('Mean Absolute Error')
-plt.show()
+print("Test Mean Absolute Error (GB): ", mean_absolute_error(y_test_sc, y_test_sc_pred_gb))
+print("Test Mean Squared Error (GB): ", mean_squared_error(y_test_sc, y_test_sc_pred_gb))
+print("Test R2 Score (GB): ", r2_score(y_test_sc, y_test_sc_pred_gb))
