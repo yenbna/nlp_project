@@ -1,5 +1,10 @@
-print("Final Model Performance for Score Classification:")
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
+# Predict on the validation and test sets using the best Random Forest model
+y_valid_sc_pred = best_model.predict(X_valid_sc_tfidf)
+y_test_sc_pred = best_model.predict(X_test_sc_tfidf)
+
+# Evaluate the Random Forest model
 print("Random Forest Model:")
 print("Validation Mean Absolute Error: ", mean_absolute_error(y_valid_sc, y_valid_sc_pred))
 print("Validation Mean Squared Error: ", mean_squared_error(y_valid_sc, y_valid_sc_pred))
@@ -8,12 +13,3 @@ print("Validation R2 Score: ", r2_score(y_valid_sc, y_valid_sc_pred))
 print("Test Mean Absolute Error: ", mean_absolute_error(y_test_sc, y_test_sc_pred))
 print("Test Mean Squared Error: ", mean_squared_error(y_test_sc, y_test_sc_pred))
 print("Test R2 Score: ", r2_score(y_test_sc, y_test_sc_pred))
-
-print("Gradient Boosting Model:")
-print("Validation Mean Absolute Error (GB): ", mean_absolute_error(y_valid_sc, y_valid_sc_pred_gb))
-print("Validation Mean Squared Error (GB): ", mean_squared_error(y_valid_sc, y_valid_sc_pred_gb))
-print("Validation R2 Score (GB): ", r2_score(y_valid_sc, y_valid_sc_pred_gb))
-
-print("Test Mean Absolute Error (GB): ", mean_absolute_error(y_test_sc, y_test_sc_pred_gb))
-print("Test Mean Squared Error (GB): ", mean_squared_error(y_test_sc, y_test_sc_pred_gb))
-print("Test R2 Score (GB): ", r2_score(y_test_sc, y_test_sc_pred_gb))
