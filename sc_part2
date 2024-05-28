@@ -1,21 +1,7 @@
-import csv
-import pandas as pd
+# Load cleaned data with specified encoding
+train_df = pd.read_csv('cleaned_train_pc.csv', encoding='latin1')
+valid_df = pd.read_csv('cleaned_valid_pc.csv', encoding='latin1')
+test_df = pd.read_csv('cleaned_test_pc.csv', encoding='latin1')
 
-# Function to clean CSV files by removing problematic lines
-def clean_csv(file_path, output_path, encoding='latin1'):
-    with open(file_path, encoding=encoding) as infile, open(output_path, 'w', encoding=encoding) as outfile:
-        reader = csv.reader(infile)
-        writer = csv.writer(outfile)
-        for line in reader:
-            try:
-                # Try to parse the line and write to output if successful
-                pd.DataFrame([line])
-                writer.writerow(line)
-            except Exception as e:
-                # Skip problematic line
-                print(f"Skipping problematic line: {line}")
-
-# Clean each file and write to new cleaned files
-clean_csv('train_sc.csv', 'cleaned_train_sc.csv')
-clean_csv('valid_sc.csv', 'cleaned_valid_sc.csv')
-clean_csv('test_sc.csv', 'cleaned_test_sc.csv')
+# Preview the data
+print(train_df.head())
